@@ -9,45 +9,56 @@
 </head>
 <body>
 	<div class="container">
-		<div clss="input">
-			Deck Size (n): <input type="number" name="n" value="16">
-			<button type="button" name="run">Run</button>
+		<div class="input">
+			Deck Size (n): <input type="number" id="n" value="14">
+			<button type="button" id="run">Run</button>
 		</div>
 		<br>
-		<div clss="output">
-			<div clss="o_n">
+		<div class="output">
+			<div class="o_n">
+
+			</div>
+			<br>
+			<div class="o_order">
 			
 			</div>
-			<div clss="o_order">
+			<br>
+			<div class="o_perm">
 			
 			</div>
-			<div clss="o_cycles">
+			<br>
+			<div class="o_cycles">
 			
 			</div>
 		</div>
 		<br>
-		<div clss="export">
-			<div clss="ex_in">
-				n min: <input type="number" name="ex_n_min" value="1"><br>
-				n max: <input type="number" name="ex_n_max" value="1024">
-				<button type="button" name="export">Export</button><br>
-				values: <input type="text" name="ex_values" value="n order">
+		<div class="export">
+			<div class="ex_in">
+				n min: <input type="number" id="ex_n_min" value="1"><br>
+				n max: <input type="number" id="ex_n_max" value="16"><br>
+				values: <input type="text" id="ex_values" value="n order perm cycles"><br>
+				<button type="button" id="export">Export JSON</button>
 			</div>
 			<br>
 			<div clss="ex_out">
-<textarea rows="16" cols="64">
-4,3
-8,4
-16,5
-32,6
-64,7
-128,8
-256,9
-</textarea>
+				<textarea id="export" rows="16" cols="64"></textarea>
+			</div>
+		</div>
+		<br>
+		<div class="exportcsv">
+			<div class="excsv_in">
+				n min: <input type="number" id="excsv_n_min" value="1"><br>
+				n max: <input type="number" id="excsv_n_max" value="250"> <br>
+				<button type="button" id="exportcsv">Export CSV</button>
+			</div>
+			<br>
+			<div class="excsv_out">
+				<textarea id="exportcsv" rows="16" cols="64"></textarea>
 			</div>
 		</div>
 	</div>
-	<script src="lib/math.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/mathjs/3.2.1/math.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
 	<script src="js/slide.js"></script>
 	<script src="js/application.js"></script>
 </body>

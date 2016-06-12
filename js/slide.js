@@ -9,38 +9,37 @@ function permutation(n) {
 
 function cycles(perm) {
 	var l = perm.length;
-	var done = new Array(l);
 	var cyc = new Array(l);
 	var val = new Array(l);
+	var done = new Array(l);
 	var todone = l;
 	for (var i = 0; i < l; i++) {
-		done[i] = false;
 		cyc[i] = [i];
 		val[i] = i;
+		done[i] = 1;
 	}
 	var j = 10;
 	while (todone > 0) {
-		for (var i = 0; i < l; i++) { // TODO Speed up
-			if (!done[i]) {
-				var v = val[i];
-				v = perm[v];
-				if (v < i) {
-					cyc[i] = undefined;
-					todone--;
-					done[i] = true;
-					continue;
-				}
-				if (v == i) {
-					todone--;
-					done[i] = true;
-					continue;
-				}
-				val[i] = v;
-				cyc[i].push(v);
+		cyc = cyc.filter(function (c) {
+			var i = c[0];
+			var v = val[i];
+			v = perm[v];
+			if (v < i) {
+				done[i] = true;
+				todone--;
+				return false;
+			} 
+			if (v == i) {
+				todone -= done[i];
+				done[i] = 0;
+				return true;
 			}
-		}
+			val[i] = v;
+			c.push(v);
+			return true;
+		});
 	}
-	return cyc.filter(function(v) { return v != undefined; });
+	return cyc;
 }
 
 function orderSafe(cycles) {
@@ -60,5 +59,3 @@ function orderFast(cycles) { // Not proven to return order, but testing would su
 	}
 	return o;
 }
-
-console.log(orderFast(cycles(permutation(8191))));
