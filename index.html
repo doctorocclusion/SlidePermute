@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Slide Permute</title>
+
+	<link href="style/main.css" rel="stylesheet" type="text/css">
+	<link rel="shortcut icon" href="favicon.ico">
+</head>
+<body>
+	<div class="container">
+		<div clss="input">
+			Deck Size (n): <input type="number" name="n" value="16">
+			<button type="button" name="run">Run</button>
+		</div>
+		<br>
+		<div clss="output">
+			<div clss="o_n">
+			
+			</div>
+			<div clss="o_order">
+			
+			</div>
+			<div clss="o_cycles">
+			
+			</div>
+		</div>
+		<br>
+		<div clss="export">
+			<div clss="ex_in">
+				n min: <input type="number" name="ex_n_min" value="1"><br>
+				n max: <input type="number" name="ex_n_max" value="1024">
+				<button type="button" name="export">Export</button><br>
+				values: <input type="text" name="ex_values" value="n order">
+			</div>
+			<br>
+			<div clss="ex_out">
+<textarea rows="16" cols="64">
+4,3
+8,4
+16,5
+32,6
+64,7
+128,8
+256,9
+</textarea>
+			</div>
+		</div>
+	</div>
+	<script src="lib/math.js"></script>
+	<script src="js/slide.js"></script>
+	<script src="js/application.js"></script>
+</body>
+</html>
