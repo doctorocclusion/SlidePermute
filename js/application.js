@@ -69,20 +69,31 @@ function slideOut() {
 	for (var i = 0; i < n; i++) {
 		val[i] = i;
 	}
-	var out = ">> " + val.join(" ");
+	var decl = math.floor(math.log10(n - 1) + 1);
+	var padv = function(e) { return pad(e, decl); };
+	var out = ">> " + val.map(padv).join(" ");
 	var perm = permutation(n);
 	var o = orderSafe(cycles(perm));
+	console.log(decl);
 	for (var i = 0; i < o; i++) {
 		out += "\n>> "
 		var oval = val.slice();
 		for (var j = 0; j < n; j++) {
 			val[j] = oval[perm[j]];
 		}
-		out += val.join(" ");
+		out += val.map(padv).join(" ");
 	}
 	$("textarea#slide_out").val(out);
 }
 $("button#slide").click(slideOut);
+
+function pad(v, l) {
+	var out = "" + v;
+	while (out.length < l) {
+		out += " ";
+	}
+	return out;
+}
 
 function run() {
 	var n = Number($("input#n").val());
