@@ -17,7 +17,11 @@ function exportCSV() {
 	for (var n = min; n <= max; n++) {
 		data += n + "," + orderSafe(cycles(permutation(n))) + "\n";
 	}
-	$("textarea#exportcsv").val(data);
+
+	var dataUri = "data:application/octet-stream," + encodeURIComponent(data);
+	var filename = "orders_" + min + "_to_" + max + ".csv";
+
+	$(".excsv_out").html("<a download='" + filename + "' href='" + dataUri + "'>Download " + min + " to " + max + "</a>")
 }
 $("button#exportcsv").click(exportCSV);
 
@@ -117,5 +121,5 @@ $("button#run").click(run);
 
 run();
 exportJSON();
-exportCSV();
 slideOut();
+exportCSV();
