@@ -18,10 +18,12 @@ function exportCSV() {
 		data += n + "," + orderSafe(cycles(permutation(n))) + "\n";
 	}
 
+	$("textarea#exportcsv").val(data);
+
 	var dataUri = "data:application/octet-stream," + encodeURIComponent(data);
 	var filename = "orders_" + min + "_to_" + max + ".csv";
 
-	$(".excsv_out").html("<a download='" + filename + "' href='" + dataUri + "'>Download " + min + " to " + max + "</a>")
+	$(".excsv_out").html("<a download='" + filename + "' href='" + dataUri + "'>Download " + min + " to " + max + " (Chrome Recommended)</a>")
 }
 $("button#exportcsv").click(exportCSV);
 
@@ -63,7 +65,13 @@ function exportJSON() {
 		}
 		data.push(d);
 	}
-	$("textarea#export").val(JSON.stringify(data));
+	var dataJson = JSON.stringify(data, null, 2);
+	$("textarea#export").val(dataJson);
+
+	var dataUri = "data:text/json," + encodeURIComponent(dataJson);
+	var filename =  values.join("_") + "_" + min + "_to_" + max + "_" + ".json";
+
+	$(".ex_out").html("<a download='" + filename + "' href='" + dataUri + "'>Download " + min + " to " + max + " (Chrome Recommended)</a>")
 }
 $("button#export").click(exportJSON);
 
