@@ -15,7 +15,7 @@ function exportCSV() {
 	var max = Number($("input#excsv_n_max").val());
 	var data = "";
 	for (var n = min; n <= max; n++) {
-		data += n + "," + orderSafe(cycles(permutation(n))) + "\n";
+		data += n + "," + orderSafe(cycles(permutation(n))) + "\r\n";
 	}
 
 	$("textarea#exportcsv").val(data);
@@ -99,6 +99,34 @@ function slideOut() {
 }
 $("button#slide").click(slideOut);
 
+function exportPlot() {
+	var min = Number($('input#plot_n_min').val());
+	var max = Number($('input#plot_n_max').val());
+
+	var trace = {
+		x: [],
+		y: [],
+		mode: 'markers',
+  		type: 'scatter'
+	};
+
+	for (var n = min; n <= max; n++) {
+		trace.x.push(n);
+		trace.y.push(orderSafe(cycles(permutation(n))));
+	}
+
+	var layout = {
+		title: 'n vs order',
+		height: 500,
+		width: 800
+	};
+
+	console.log()
+
+	Plotly.newPlot('plot_view', [trace], layout);
+}
+$('button#plot').click(exportPlot);
+
 function pad(v, l) {
 	var out = "" + v;
 	while (out.length < l) {
@@ -131,3 +159,4 @@ run();
 exportJSON();
 slideOut();
 exportCSV();
+exportPlot();
