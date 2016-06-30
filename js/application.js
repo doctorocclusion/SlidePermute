@@ -135,6 +135,40 @@ function pad(v, l) {
 	return out;
 }
 
+function runTest() {
+	var firstn = Number($('input#test_n_min').val());
+	var maxn = Number($('input#test_n_max').val());
+	var code = "(function(n) {\n";
+	code += "var perm = permutation(n);\n"
+	code += "var cyc = cycles(perm);\n"
+	code += "var order = orderSafe(cyc);\n"
+	code += $("textarea#test_code").val() + "\n";
+	code += "return true;\n";
+	code += "})";
+
+	console.log(code);
+
+	var r = eval(code);
+	var out = "";
+
+	for (var n = firstn; n <= maxn; n = next) {
+		next = n + 1;
+		var ret = r(n);
+		if (typeof ret === 'boolean') {
+			if (ret) {
+				out += n + "\n";
+			}
+		} else {
+			out += JSON.stringify(ret) + "\n";
+		}
+	}
+
+	console.log(out);
+
+	$("textarea#test_out").val(out);
+}
+$('button#test').click(runTest);
+
 function run() {
 	var n = Number($("input#n").val());
 	console.log(n);
@@ -160,3 +194,4 @@ exportJSON();
 slideOut();
 exportCSV();
 exportPlot();
+runTest();

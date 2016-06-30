@@ -48,6 +48,20 @@
 			<div id="plot_view"></div>
 		</div>
 		<br>
+		<div class="test">
+			<div class="test_in">
+				first n: <input type="number" id="test_n_min" value="1"><br>
+				n max: <input type="number" id="test_n_max" value="64"><br>
+				code: <br><textarea id="test_code" rows="16" cols="64">
+if ((n - 2) * 2 / 3 == order) return [n, order];
+else return false;
+				</textarea>
+				<button type="button" id="test">Run Test</button>
+			</div>
+			<br>
+			<textarea id="test_out" rows="16" cols="64"></textarea>
+		</div>
+		<br>
 		<div class="export">
 			<div class="ex_in">
 				n min: <input type="number" id="ex_n_min" value="1"><br>
