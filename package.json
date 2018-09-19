@@ -1,0 +1,15 @@
+{
+  "name": "SlidePermute",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:samsartor/SlidePermute.git",
+  "author": "Sam Sartor <me@samsartor.com>",
+  "license": "MIT",
+  "dependencies": {
+    "parcel-bundler": "^1.9",
+    "parcel-plugin-cargo-web": "^0.3"
+  },
+  "devDependencies": {
+    "node-sass": "^4.9.3"
+  }
+}

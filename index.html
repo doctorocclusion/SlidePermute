@@ -1,94 +1,20 @@
-<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<title>Slide Permute</title>
 
-	<link href="style/main.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="favicon.ico">
 </head>
-<body>
-	<div class="info">
-		This is a calculator for that weird permutation thing I found. Get whoever linked you here to explain it, I don't feel like typing.<br>
-		The n's such that permutation_order(n) = n - 1 appear to form <a href="https://oeis.org/A137606">this sequence</a>. If someone can explain/prove any patterns in this, especially the properties of permutations where n=2^I or n=2^I+1, please <a href="https://twitter.com/drocclusion">tweet</a> or <a href="mailto:mrocclusion@gmail.com" target="_top">email</a> me.
+<body class="root">
+	<script src="./index.js"></script>
+	<div class="top">
+		<input id="number" class="item" placeholder="Number">
+		<button id="go" class="item -blue">Go</button>
+		<div class="fill_item"></div>
+		<div id="num" class="item -gold"></div>
+		<div id="order" class="item -gold"></div>
+		<div id="cycles" class="item -gold"></div>
 	</div>
-	<br>
-	<div class="container">
-		<div class="input">
-			Deck Size (n): <input type="number" id="n" value="14">
-			<button type="button" id="run">Run (Info)</button>
-		</div>
-		<br>
-		<div class="output">
-			<div class="o_n"></div><br>
-			<div class="o_order"></div><br>
-			<div class="o_cycle_lens"></div><br>
-			<div class="o_perm"></div><br>
-			<div class="o_cycles"></div>
-		</div>
-		<br>
-		<div class="slide">
-			<div class="slide_in">
-				n = <input type="number" id="slide_n" value="14">
-				<button type="button" id="slide">Run (States)</button>
-			</div>
-			<br>
-			<div class="slide_out">
-				<textarea id="slide_out" rows="16" cols="128"></textarea>
-			</div>
-		</div>
-		<br>
-		<div class="plot">
-			<div class="plot_in">
-				n min: <input type="number" id="plot_n_min" value="1"><br>
-				n max: <input type="number" id="plot_n_max" value="250"> <br>
-				<button type="button" id="plot">Plot</button>
-			</div>
-			<br>
-			<div id="plot_view"></div>
-		</div>
-		<br>
-		<div class="test">
-			<div class="test_in">
-				first n: <input type="number" id="test_n_min" value="1"><br>
-				n max: <input type="number" id="test_n_max" value="64"><br>
-				code: <br><textarea id="test_code" rows="16" cols="64">
-if ((n - 2) * 2 / 3 == order) return [n, order];
-else return false;
-				</textarea>
-				<button type="button" id="test">Run Test</button>
-			</div>
-			<br>
-			<textarea id="test_out" rows="16" cols="64"></textarea>
-		</div>
-		<br>
-		<div class="export">
-			<div class="ex_in">
-				n min: <input type="number" id="ex_n_min" value="1"><br>
-				n max: <input type="number" id="ex_n_max" value="16"><br>
-				values: <input type="text" id="ex_values" value="n order perm cycles"> Can be any of [n, order, perm, cycles, nprime, oprime, ismax]<br>
-				<button type="button" id="export">Export JSON</button>
-			</div>
-			<br>
-			<div class="ex_out"></div>
-			<textarea id="export" rows="16" cols="64"></textarea>
-		</div>
-		<br>
-		<div class="exportcsv">
-			<div class="excsv_in">
-				n min: <input type="number" id="excsv_n_min" value="1"><br>
-				n max: <input type="number" id="excsv_n_max" value="16"> <br>
-				<button type="button" id="exportcsv">Export CSV</button>
-			</div>
-			<br>
-			<div class="excsv_out"></div>
-			<textarea id="exportcsv" rows="16" cols="64"></textarea>
-		</div>
-	</div>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/mathjs/3.2.1/math.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
-	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-	<script src="js/slide.js"></script>
-	<script src="js/application.js"></script>
+	<div id="content" class="bottom -prettyscroll"></div>
 </body>
 </html>

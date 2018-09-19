@@ -1,0 +1,124 @@
+.text {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.root {
+    @extend .text;
+
+    position: absolute;
+    background-color: #434343;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 6rem 1fr;
+    top: 2rem;
+    bottom: 2rem;
+    left: 2rem;
+    right: 2rem;
+}
+
+.a_top {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+}
+
+.a_bottom {
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+}
+
+@mixin scrollbars($size, $foreground-color, $background-color) {
+    ::-webkit-scrollbar {
+        width:  $size;
+        height: $size;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: $foreground-color;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: $background-color;
+    }
+
+    body {
+        scrollbar-face-color: $foreground-color;
+        scrollbar-track-color: $background-color;
+    }
+}
+
+$sectionbg: #3d3d3d;
+
+@include scrollbars(0.5rem, black, $sectionbg);
+
+.section {
+    margin: 0.5rem;
+    border-width: 0;
+    border-radius: 0.5rem;
+    background-color: $sectionbg;
+}
+
+.top {
+    @extend .a_top;
+    @extend .section;
+
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+.bottom {
+    @extend .a_bottom;
+    @extend .section;
+
+    overflow: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.fill_item {
+    display: hidden;
+    flex-grow: 1;
+}
+
+.item {
+    @extend .text;
+
+    margin: 0.5rem;
+    padding: 1rem;
+    border-width: 0;
+    border-radius: 0.5rem;
+    background-color: #f1f1f1;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    min-height: 1.5rem;
+}
+
+.divider {
+    border-left: solid black 2px;
+    margin: 0 1rem;
+    align-self: stretch;
+}
+
+$colors: (
+    "blue": #1585c5,
+    "gold": gold,
+    "error": rgb(202, 73, 73),
+);
+
+@each $color, $value in $colors {
+    .item.-#{$color} {
+        background-color: $value;
+    }
+
+    button.item.-#{$color}:hover {
+        background-color: darken($value, 10%);
+    }
+}
